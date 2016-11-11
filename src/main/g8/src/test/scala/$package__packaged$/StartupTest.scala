@@ -1,0 +1,14 @@
+package $package$
+
+import com.google.inject.Stage
+import com.twitter.finatra.http.test.EmbeddedHttpServer
+import com.twitter.inject.server.FeatureTest
+
+class StartupTest extends FeatureTest {
+
+  val server = new EmbeddedHttpServer(stage = Stage.PRODUCTION, twitterServer = new Server)
+
+  "server" in {
+    server.assertHealthy()
+  }
+}
